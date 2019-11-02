@@ -6,7 +6,7 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var cors = require('cors');
 app.set('view engine', 'ejs');
-
+//adding sample comment
 //use cors to allow cross origin resource sharing
 app.use(cors({ origin: 'http://localhost:3000', credentials: false }));
 
@@ -25,47 +25,47 @@ app.use(cors({ origin: 'http://localhost:3000', credentials: false }));
 
 
 //Allow Access Control
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.header('Access-Control-Allow-Credentials', 'true');
     res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
     res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
     res.header('Cache-Control', 'no-cache');
     next();
-  });
-  app.use(bodyParser.json());
+});
+app.use(bodyParser.json());
 
-app.post("/add",function(req,res){
-    let {num1,num2}=req.body;
-    let result =num1+num2;
+app.post("/add", function (req, res) {
+    let { num1, num2 } = req.body;
+    let result = num1 + num2;
     console.log(`The result of ${num1} + ${num2} = ${result}`);
-    res.status=200;
-   res.setHeader("Content-Type", "application/json");
-    res.send(JSON.stringify({result}));
+    res.status = 200;
+    res.setHeader("Content-Type", "application/json");
+    res.send(JSON.stringify({ result }));
 });
-app.post("/subtract",function(req,res){
-    let {num1,num2}=req.body;
-    let result =num1-num2;
+app.post("/subtract", function (req, res) {
+    let { num1, num2 } = req.body;
+    let result = num1 - num2;
     console.log(`The result of ${num1} - ${num2} = ${result}`);
-    res.status=200;
-   res.setHeader("Content-Type", "application/json");
-    res.send(JSON.stringify({result}));
+    res.status = 200;
+    res.setHeader("Content-Type", "application/json");
+    res.send(JSON.stringify({ result }));
 });
-app.post("/multiply",function(req,res){
-    let {num1,num2}=req.body;
-    let result =num1*num2;
+app.post("/multiply", function (req, res) {
+    let { num1, num2 } = req.body;
+    let result = num1 * num2;
     console.log(`The result of ${num1} * ${num2} = ${result}`);
-    res.status=200;
-   res.setHeader("Content-Type", "application/json");
-    res.send(JSON.stringify({result}));
+    res.status = 200;
+    res.setHeader("Content-Type", "application/json");
+    res.send(JSON.stringify({ result }));
 });
-app.post("/divide",function(req,res){
-    let {num1,num2}=req.body;
-    let result =num1/num2;
+app.post("/divide", function (req, res) {
+    let { num1, num2 } = req.body;
+    let result = num1 / num2;
     console.log(`The result of ${num1} / ${num2} = ${result}`);
-    res.status=200;
-   res.setHeader("Content-Type", "application/json");
-    res.send(JSON.stringify({result}));
+    res.status = 200;
+    res.setHeader("Content-Type", "application/json");
+    res.send(JSON.stringify({ result }));
 });
 
 //start your server on port 3001
